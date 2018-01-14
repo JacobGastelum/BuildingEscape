@@ -9,3 +9,6 @@ BuildingEscape/Content/StarterContent/HDRI
 
 #VS generated files
 *.VC.db
+*.suo
+*.VC.opendb
+*.sln
