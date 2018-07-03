@@ -25,6 +25,10 @@ void UOpenDoor::BeginPlay()
 
 	Owner = GetOwner();
 
+	if (PressurePlate == nullptr)
+	{
+		UE_LOG(LogTemp, Error, TEXT("%s PressurePlate not found"), *GetOwner()->GetName())
+	}
 }
 
 // Called every frame
