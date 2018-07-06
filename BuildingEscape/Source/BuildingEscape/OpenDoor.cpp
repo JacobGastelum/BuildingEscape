@@ -55,7 +55,7 @@ void UOpenDoor::OpenDoor()
 }
 void UOpenDoor::CloseDoor()
 {
-	Owner->SetActorRotation(FRotator(0.0f, 180.0, 0.0f));
+	Owner->SetActorRotation(FRotator(0.0f, CloseAngle, 0.0f));
 }
 
 float UOpenDoor::GetTotalMassOfActorsOnPlate()
