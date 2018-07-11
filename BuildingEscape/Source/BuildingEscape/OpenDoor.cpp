@@ -37,6 +37,11 @@ void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
 	//Poll the trigger volume
+
+	//if (Locked && GetOverlappingActors == Key) 
+	//{
+		OnOpen.Broadcast();
+	//}
 	if (GetTotalMassOfActorsOnPlate() > TriggerMass)
 	{
 		OnOpen.Broadcast();
@@ -63,4 +68,3 @@ float UOpenDoor::GetTotalMassOfActorsOnPlate()
 	
 	return TotalMass;
 }
-
