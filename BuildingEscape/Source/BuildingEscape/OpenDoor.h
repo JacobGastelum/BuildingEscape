@@ -39,6 +39,9 @@ private:
 	UPROPERTY(EditAnywhere)
 	float TriggerMass = 30.f;
 
+	UPROPERTY(EditAnywhere)
+	bool Locked;
+
 	// The owning door
 	AActor* Owner = nullptr; 
 
