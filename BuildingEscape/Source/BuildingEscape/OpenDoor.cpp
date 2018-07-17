@@ -38,11 +38,11 @@ void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
 
 	//Poll the trigger volume
 
-	//if (Locked && GetOverlappingActors == Key) 
-	//{
+	if (Locked && GetKey() == true)
+	{
 		OnOpen.Broadcast();
-	//}
-	if (GetTotalMassOfActorsOnPlate() > TriggerMass)
+	}
+	if (!Locked && GetTotalMassOfActorsOnPlate() > TriggerMass)
 	{
 		OnOpen.Broadcast();
 	}
@@ -65,6 +65,22 @@ float UOpenDoor::GetTotalMassOfActorsOnPlate()
 		TotalMass += Actor->FindComponentByClass<UPrimitiveComponent>()->GetMass();
 		UE_LOG(LogTemp, Warning, TEXT("%s on pressure plate"), *Actor->GetName());
 	}
-	
+
 	return TotalMass;
+}
+
+//logic for determining if door opens by an object instead
+bool UOpenDoor::GetKey()
+{
+	bool unlocked = false;
+	TArray<AActor*> OverlappingActors;
+	if (!PressurePlate) { return unlocked; }
+	PressurePlate->GetOverlappingActors(OUT OverlappingActors);
+
+	if (IsOverlappingActor(Key))
+	{
+		unlocked = true;
+	}
+
+	return unlocked;
 }

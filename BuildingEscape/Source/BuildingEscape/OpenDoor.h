@@ -42,9 +42,13 @@ private:
 	UPROPERTY(EditAnywhere)
 	bool Locked;
 
+	UPROPERTY(EditAnywhere)
+	AActor* Key = nullptr;
+
 	// The owning door
 	AActor* Owner = nullptr; 
 
 	float GetTotalMassOfActorsOnPlate();
+	bool GetKey();
 	
 };
