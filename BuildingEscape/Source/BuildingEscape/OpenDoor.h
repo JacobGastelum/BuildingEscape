@@ -37,10 +37,10 @@ private:
 	ATriggerVolume* PressurePlate = nullptr;
 	
 	UPROPERTY(EditAnywhere)
-	float TriggerMass = 30.f;
+	bool Unlocked;
 
-	UPROPERTY(EditAnywhere)
-	bool Locked;
+	UPROPERTY(EditAnywhere, meta = (EditCondition = "Unlocked"))
+	float TriggerMass = 30.f;
 
 	UPROPERTY(EditAnywhere)
 	AActor* Key = nullptr;
